@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly 'javax:javaee-web-api:7.0'
+    implementation 'org.springframework:spring-webmvc:4.2.2.RELEASE'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+    testCompile 'junit:junit:4.12'
+}
