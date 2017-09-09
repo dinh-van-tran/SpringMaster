@@ -9,5 +9,7 @@ dependencies {
     compileOnly 'javax:javaee-web-api:7.0'
     implementation 'org.springframework:spring-webmvc:4.2.2.RELEASE'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+    implementation 'org.webjars:jquery:1.9.1'
+    implementation 'org.webjars:bootstrap:3.3.6'
     testCompile 'junit:junit:4.12'
 }
