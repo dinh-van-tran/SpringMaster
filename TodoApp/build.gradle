@@ -7,7 +7,9 @@ repositories {
 
 dependencies {
     compileOnly 'javax:javaee-web-api:7.0'
-    implementation 'org.springframework:spring-webmvc:4.2.2.RELEASE'
+    implementation 'org.springframework:spring-webmvc:4.2.3.RELEASE'
+    implementation 'org.springframework.security:spring-security-web:4.2.3.RELEASE'
+    implementation 'org.springframework.security:spring-security-config:4.2.3.RELEASE'
     implementation 'org.webjars:bootstrap:3.3.6'
     implementation 'org.webjars:jquery:1.11.1'
     implementation 'log4j:log4j:1.2.17'
