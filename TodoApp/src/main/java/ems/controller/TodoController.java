@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,6 +25,13 @@ public class TodoController {
     public String ShowAddTodoPage( ModelMap model ) {
         model.addAttribute( "todo", new Todo() );
         return "todo";
+    }
+
+    @RequestMapping( value = "/add-todo", method = RequestMethod.POST )
+    public String ShowAddTodoPage( ModelMap model, @PathVariable Todo todo ) {
+        todo.setUser( getUsername() );
+        todoService.addTodo( todo );
+        return "redirect:/list-todos";
     }
 
     private String getUsername() {

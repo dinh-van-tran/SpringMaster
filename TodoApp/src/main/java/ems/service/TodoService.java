@@ -34,4 +34,8 @@ public class TodoService {
         }
         return result;
     }
+
+    public void addTodo( Todo todo ) {
+        todos.add( todo );
+    }
 }
