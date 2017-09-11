@@ -31,9 +31,19 @@
 </div>
 <%@ include file="common/footer.jspf" %>
 <script>
-$(document).ready(function() {
+$(document).ready(function(){
     $("[name='delete']").click(function() {
-        alert($(this).prev().val().toString());
-    });
+        var id = $(this).prev().val().toString();
+        var div = $(this).parent().parent();
+        $.post("/delete-todo", 
+        {
+            id : id
+        },
+        function (returnedData) {
+            if(returnedData) {
+                div.remove();
+            }
+        });
+    }); 
 });
 </script>
