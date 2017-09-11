@@ -33,14 +33,18 @@
 <script>
 $(document).ready(function(){
     $("[name='delete']").click(function() {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
         var id = $(this).prev().val().toString();
         var div = $(this).parent().parent();
-        $.post("/delete-todo", 
-        {
-            id : id
-        },
-        function (returnedData) {
-            if(returnedData) {
+        $.ajax({
+            url: "/delete-todo",
+            type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            data: {id: id},
+            success: function (data) {
                 div.remove();
             }
         });
