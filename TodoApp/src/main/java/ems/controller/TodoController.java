@@ -37,7 +37,7 @@ public class TodoController {
     }
 
     private String getUsername() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if ( principal instanceof UserDetails ) {
             return ((UserDetails) principal).getUsername();
         }
