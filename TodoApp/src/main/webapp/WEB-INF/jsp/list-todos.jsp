@@ -14,7 +14,7 @@
                 <tr>
                     <td>${todo.user}</td>
                     <td>${todo.desc}</td>
-                    <td>${todo.date}</td>
+                    <td>${todo.targetDate}</td>
                     <td>${todo.done}</td>
                 </tr>
             </c:forEach>

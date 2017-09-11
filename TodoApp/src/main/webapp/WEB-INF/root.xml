@@ -18,5 +18,5 @@
         </property>
     </bean>
 
-    <mvc:resources location="/webjar/" mapping="/webjar/**"/>
+    <mvc:resources location="/webjars/" mapping="/webjars/**"/>
 </beans>

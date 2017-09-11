@@ -5,6 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Simple Todo App</title>
-<link href="/webjar/bootstrap/3.3.6/css/bootstrap.css" type="stylesheet" />
+<link href="/webjars/bootstrap/3.3.6/css/bootstrap.css" type="stylesheet" />
 </head>
 <body>
