@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
     @RequestMapping("/")
     public String showWelcomePage() {
-        return "index";
+        return "redirect:/list-todos";
     }
 }

@@ -7,6 +7,7 @@
                 <th>Description</th>
                 <th>Date</th>
                 <th>Completed</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,10 @@
                     <td>${todo.desc}</td>
                     <td>${todo.targetDate}</td>
                     <td>${todo.done}</td>
+                    <td>
+                        <input type="hidden" name="id" value="${todo.id}" />
+	                    <button type="button" class="btn btn-warning" name="delete">Delete</button>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -25,3 +30,10 @@
     </div>
 </div>
 <%@ include file="common/footer.jspf" %>
+<script>
+$(document).ready(function() {
+    $("[name='delete']").click(function() {
+        alert($(this).prev().val().toString());
+    });
+});
+</script>
