@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TodoController {
     private TodoService todoService;
 
-    @RequestMapping( value = "/list-todo", method = RequestMethod.GET )
+    @RequestMapping( value = "/list-todos", method = RequestMethod.GET )
     public String showTodoList( ModelMap model ) {
         model.addAttribute( "todos", todoService.getAll( getUsername() ) );
-        return "list-todo";
+        return "list-todos";
     }
 
     private String getUsername() {
