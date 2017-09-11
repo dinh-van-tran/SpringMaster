@@ -1,5 +1,6 @@
 package ems.controller;
 
+import ems.model.Todo;
 import ems.service.TodoService;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +18,12 @@ public class TodoController {
     public String showTodoList( ModelMap model ) {
         model.addAttribute( "todos", todoService.getAll( getUsername() ) );
         return "list-todos";
+    }
+
+    @RequestMapping( value = "/add-todo", method = RequestMethod.GET )
+    public String ShowAddTodoPage( ModelMap model ) {
+        model.addAttribute( "todo", new Todo() );
+        return "todo";
     }
 
     private String getUsername() {
