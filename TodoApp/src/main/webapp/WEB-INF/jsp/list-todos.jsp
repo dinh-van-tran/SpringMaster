@@ -46,7 +46,10 @@ $(document).ready(function(){
             },
             data: {id: id},
             success: function (data) {
-                div.remove();
+                if(data) {
+                    console.log(data);
+                    div.remove();
+                }
             }
         });
     }); 
