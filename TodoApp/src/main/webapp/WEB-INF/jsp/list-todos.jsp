@@ -1,6 +1,6 @@
 <%@ include file="common/header.jspf" %>
 <div class="container">
-    <table class="table table-stripped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Name</th>
