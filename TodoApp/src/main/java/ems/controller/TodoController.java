@@ -22,6 +22,8 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
+    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     @RequestMapping( value = "/list-todos", method = RequestMethod.GET )
     public String showTodoList( ModelMap model ) {
         model.addAttribute( "todos", todoService.getAll( getUsername() ) );
@@ -44,6 +46,7 @@ public class TodoController {
     @RequestMapping( value = "/update-todo", method = RequestMethod.GET )
     public String showUpdateTodoPage( ModelMap model, @RequestParam(required=true) int id) {
         model.addAttribute("todo", todoService.get(id));
+        model.addAttribute("targetDate", dateFormat.format(todoService.get(id).getTargetDate()));
         return "todo";
     }
 
@@ -68,10 +71,9 @@ public class TodoController {
     }
 
     private Date parseDateInput(String source) {
-        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
         if(source != null && !source.isEmpty()) {
             try {
-                Date result = df.parse( source );
+                Date result = dateFormat.parse( source );
                 return result;
             } catch ( ParseException e ) {
                 e.printStackTrace();

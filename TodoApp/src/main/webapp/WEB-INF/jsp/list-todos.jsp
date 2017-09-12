@@ -17,7 +17,7 @@
                 <tr>
                     <td>${todo.user}</td>
                     <td>${todo.desc}</td>
-                    <td>${todo.targetDate}</td>
+                    <td><fmt:formatDate pattern="dd/MM/yyyy" value="${todo.targetDate}"/></td>
                     <td>${todo.done}</td>
                     <td>
                         <a type="button" href="/update-todo?id=${todo.id}" class="btn btn-warning">Update</a>

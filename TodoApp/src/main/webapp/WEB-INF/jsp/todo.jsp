@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="targetDate">Target Date:</label>
-            <input id="targetDate" type="date" name="targetDate" class="form-control" required="required" value="${todo.targetDate}"/>
+            <input id="targetDate" type="date" name="targetDate" class="form-control" required="required" value="${targetDate}"/>
         </div>
         <button id="submit" type="submit" class="btn btn-success">Submit</button>
         <button type="reset" class="btn btn-warning">Reset</button>
@@ -19,6 +19,10 @@
 <%@ include file="common/footer.jspf" %>
 <script>
 $(function() {
+    $("#targetDate").datepicker(
+        format:'dd/mm/yyyy'
+    );
+
     $("#desc").get(0).oninvalid = function() {
         this.setCustomValidity("Please enter at least 10 characters");
         this.setCustomValidity("");
