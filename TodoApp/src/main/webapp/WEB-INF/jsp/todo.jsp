@@ -1,4 +1,5 @@
 <%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <form action="/add-todo" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" >

@@ -1,4 +1,5 @@
 <%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <table class="table table-striped">
         <thead>
