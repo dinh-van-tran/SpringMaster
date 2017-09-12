@@ -1,5 +1,10 @@
 package ems.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import ems.model.Todo;
 import ems.service.TodoService;
 
@@ -8,9 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TodoController {
@@ -30,9 +35,10 @@ public class TodoController {
     }
 
     @RequestMapping( value = "/add-todo", method = RequestMethod.POST )
-    public String ShowAddTodoPage( ModelMap model, @PathVariable Todo todo ) {
-        todo.setUser( getUsername() );
-        todoService.addTodo( todo );
+    public String ShowAddTodoPage( ModelMap model, @RequestParam(required=true) int id,
+                                                   @RequestParam(required=true) String desc,
+                                                   @RequestParam(required=true) String targetDate) {
+        todoService.addTodo( new Todo(id, getUsername(), desc, parseDateInput(targetDate), false) );
         return "redirect:/list-todos";
     }
 
@@ -42,5 +48,18 @@ public class TodoController {
             return ((UserDetails) principal).getUsername();
         }
         return principal.toString();
+    }
+
+    private Date parseDateInput(String source) {
+        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        if(source != null && !source.isEmpty()) {
+            try {
+                Date result = df.parse( source );
+                return result;
+            } catch ( ParseException e ) {
+                e.printStackTrace();
+            }
+        }
+        return new Date();
     }
 }

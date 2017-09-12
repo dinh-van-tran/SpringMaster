@@ -2,6 +2,7 @@
 <div class="container">
     <form action="/add-todo" method="post">
         <input type="hidden" name="id" value="${todo.id}">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
         <div class="form-group">
             <label for="desc">Description:</label>
             <input id="desc" type="text" name="desc" class="form-control"/>
