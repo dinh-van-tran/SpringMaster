@@ -24,13 +24,13 @@ public class TodoController {
     }
 
     @RequestMapping( value = "/add-todo", method = RequestMethod.GET )
-    public String ShowAddTodoPage( ModelMap model ) {
+    public String showAddTodoPage( ModelMap model ) {
         model.addAttribute( "todo", new Todo() );
         return "todo";
     }
 
     @RequestMapping( value = "/add-todo", method = RequestMethod.POST )
-    public String ShowAddTodoPage( ModelMap model, @PathVariable Todo todo ) {
+    public String addTodo( ModelMap model, @PathVariable Todo todo ) {
         todo.setUser( getUsername() );
         todoService.addTodo( todo );
         return "redirect:/list-todos";
