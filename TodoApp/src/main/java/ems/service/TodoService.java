@@ -40,6 +40,10 @@ public class TodoService {
         todos.add( todo );
     }
 
+    public void addTodo( String username, String desc, Date parseDateInput, boolean done ) {
+        todos.add( new Todo(++todoCount, username, desc, parseDateInput, done) );
+    }
+
     public boolean remove(int id) {
         Iterator<Todo> iterator = todos.iterator();
         while(iterator.hasNext()) {
@@ -51,4 +55,5 @@ public class TodoService {
         }
         return false;
     }
+
 }

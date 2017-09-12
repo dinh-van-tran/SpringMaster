@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import ems.model.Todo;
 import ems.service.TodoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +29,13 @@ public class TodoController {
 
     @RequestMapping( value = "/add-todo", method = RequestMethod.GET )
     public String showAddTodoPage( ModelMap model ) {
-        model.addAttribute( "todo", new Todo() );
         return "todo";
     }
 
     @RequestMapping( value = "/add-todo", method = RequestMethod.POST )
-    public String addTodo( ModelMap model, @RequestParam(required=true) int id,
-                                           @RequestParam(required=true) String desc,
+    public String addTodo( ModelMap model, @RequestParam(required=true) String desc,
                                            @RequestParam(required=true) String targetDate) {
-        todoService.addTodo( new Todo(id, getUsername(), desc, parseDateInput(targetDate), false) );
+        todoService.addTodo( getUsername(), desc, parseDateInput(targetDate), false );
         return "redirect:/list-todos";
     }
 

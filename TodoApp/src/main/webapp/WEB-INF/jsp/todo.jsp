@@ -1,9 +1,6 @@
 <%@ include file="common/header.jspf" %>
 <div class="container">
     <form action="/add-todo" method="post">
-        <input type="hidden" name="id" value="${todo.id}">
-        <input type="hidden" name="user" value="${todo.user}" >
-        <input type="hidden" name="done" value="${todo.done}" >
         <input type="hidden" name="_csrf" value="${_csrf.token}" >
         <div class="form-group">
             <label for="desc">Description:</label>
