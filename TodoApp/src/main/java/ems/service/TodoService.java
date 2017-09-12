@@ -56,4 +56,12 @@ public class TodoService {
         return false;
     }
 
+    public Todo get( int id ) {
+        for ( Todo todo : todos ) {
+            if ( todo.getId() == id) {
+                return todo;
+            }
+        }
+        return null;
+    }
 }

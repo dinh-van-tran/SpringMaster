@@ -20,8 +20,9 @@
                     <td>${todo.targetDate}</td>
                     <td>${todo.done}</td>
                     <td>
+                        <a type="button" href="/update-todo?id=${todo.id}" class="btn btn-warning">Update</a>
+	                    <button type="button" class="btn btn-danger" name="delete">Delete</button>
                         <input type="hidden" name="id" value="${todo.id}" />
-	                    <button type="button" class="btn btn-warning" name="delete">Delete</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -36,7 +37,7 @@
 $(document).ready(function(){
     $("[name='delete']").click(function() {
         var token = $("meta[name='_csrf']").attr("content");
-        var id = $(this).prev().val().toString();
+        var id = $(this).next().val().toString();
         var div = $(this).parent().parent();
         $.post("/delete-todo", {
             id: id,
