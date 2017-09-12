@@ -35,21 +35,14 @@
 $(document).ready(function(){
     $("[name='delete']").click(function() {
         var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
         var id = $(this).prev().val().toString();
         var div = $(this).parent().parent();
-        $.ajax({
-            url: "/delete-todo",
-            type: "POST",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader(header, token);
-            },
-            data: {id: id},
-            success: function (data) {
-                if(data) {
-                    console.log(data);
-                    div.remove();
-                }
+        $.post("/delete-todo", {
+            id: id,
+            _csrf: token
+        }, function(data) {
+            if(data) {
+                div.remove();
             }
         });
     }); 
